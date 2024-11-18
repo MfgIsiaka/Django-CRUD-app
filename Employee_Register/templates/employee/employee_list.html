@@ -1,0 +1,30 @@
+{% extends "employee/base.html" %}
+
+{% block content %}
+ <h1>Employees</h1>
+ <table class="table">
+    <thead class="font-weight-bold border-bottom">
+        <tr>
+            <th>Name</th> 
+            <th>Code</th>
+            <th>Phone</th>
+            <th>Position</th>
+            <th><a href="" class="btn btn-success btn-md w-100">Add</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for employee in employees %}
+        <tr>
+            <td>{{employee.full_name}}</td>
+            <td>{{employee.code}}</td>
+            <td>{{employee.phone}}</td>
+            <td>{{employee.position}}</td>
+            <td> 
+                <a href="{% url 'employee_update' id=employee.id %}" class="btn btn-primary btn-sm">Edit</a>
+                <a href="{% url 'employee_delete' id=employee.id %}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+ </table>
+{% endblock %}
